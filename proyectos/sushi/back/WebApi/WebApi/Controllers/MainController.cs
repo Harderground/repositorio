@@ -20,5 +20,10 @@ namespace WebApi.Controllers
         {
             return "post";
         }
+        [HttpGet]
+        public string get2()
+        {
+            return "get";
+        }
     }
 }
