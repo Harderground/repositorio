@@ -11,6 +11,9 @@ import { appRoutingProviders, routing } from './app.routing';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MateriaPrimaComponent } from './components/materia-prima/materia-prima.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+
 
 
 
@@ -21,6 +24,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     NotFoundComponent,
     MateriaPrimaComponent,
     NavBarComponent,
+    ClienteComponent,
+    PedidosComponent,
+   
 
 
   ],
