@@ -9,12 +9,25 @@ import { NgxPaginationModule } from 'ngx-pagination'
 import { ServicioService } from './services/servicio.service';
 import { appRoutingProviders, routing } from './app.routing';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { MateriaPrimaComponent } from './components/materia-prima/materia-prima.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MateriaPrimaComponent,
+    NavBarComponent,
+    ClienteComponent,
+    PedidosComponent,
+   
+
 
   ],
   imports: [
