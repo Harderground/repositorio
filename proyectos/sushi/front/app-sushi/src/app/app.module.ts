@@ -13,6 +13,7 @@ import { MateriaPrimaComponent } from './components/materia-prima/materia-prima.
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { ClienteService } from './services/cliente.service';
 
 
 
@@ -42,6 +43,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
   providers: [
     appRoutingProviders,
     ServicioService,
+    ClienteService,
     { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
