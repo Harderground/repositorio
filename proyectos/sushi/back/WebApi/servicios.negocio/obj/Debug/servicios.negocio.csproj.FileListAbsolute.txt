@@ -1,0 +1,11 @@
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\servicios.negocio.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\servicios.negocio.pdb
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\MySql.Data.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\servicios.comun.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\servicios.conexion.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\servicios.comun.pdb
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\servicios.conexion.pdb
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\bin\Debug\MySql.Data.xml
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\obj\Debug\servicios.negocio.csprojResolveAssemblyReference.cache
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\obj\Debug\servicios.negocio.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.negocio\obj\Debug\servicios.negocio.pdb

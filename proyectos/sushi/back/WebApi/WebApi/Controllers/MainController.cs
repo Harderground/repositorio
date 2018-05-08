@@ -1,4 +1,5 @@
-﻿using System;
+﻿using servicios.negocio.Neg;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,9 +12,31 @@ namespace WebApi.Controllers
     {
 
         [HttpGet]
-        public string get()
+        public IHttpActionResult obtenerClientes()
         {
-            return "get";
+            try
+            {
+                return Ok(ClienteNeg.obtenerClientes());
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult obtenerProductos()
+        {
+            try
+            {
+                return Ok(ProductoNeg.obtenerProductos());
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+                throw;
+            }
         }
         [HttpPost]
         public string post()

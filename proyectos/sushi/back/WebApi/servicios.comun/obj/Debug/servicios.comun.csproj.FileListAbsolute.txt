@@ -1,0 +1,5 @@
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.comun\bin\Debug\servicios.comun.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.comun\bin\Debug\servicios.comun.pdb
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.comun\obj\Debug\servicios.comun.csprojResolveAssemblyReference.cache
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.comun\obj\Debug\servicios.comun.dll
+C:\Users\felip\Documents\github\repositorio\proyectos\sushi\back\WebApi\servicios.comun\obj\Debug\servicios.comun.pdb

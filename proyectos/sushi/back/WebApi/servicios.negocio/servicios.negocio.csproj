@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,11 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Neg\ClienteNeg.cs" />
+    <Compile Include="Neg\PedidoNeg.cs" />
+    <Compile Include="Neg\ProductoNeg.cs" />
+    <Compile Include="Neg\SushiNeg.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Entidades\" />
-    <Folder Include="Neg\" />
+    <ProjectReference Include="..\servicios.comun\servicios.comun.csproj">
+      <Project>{D76181F1-BF12-4E2F-A73D-F4ADEE7ACBAE}</Project>
+      <Name>servicios.comun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\servicios.conexion\servicios.conexion.csproj">
+      <Project>{62127D9E-FF10-46A8-9377-01915698E3D7}</Project>
+      <Name>servicios.conexion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
