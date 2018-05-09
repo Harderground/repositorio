@@ -14,6 +14,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { ClienteService } from './services/cliente.service';
+import { PadreComponent } from './components/padre/padre.component';
+import { HijoComponent } from './components/hijo/hijo.component';
+import { Hijo2Component } from './components/hijo2/hijo2.component';
 
 
 
@@ -27,6 +30,9 @@ import { ClienteService } from './services/cliente.service';
     NavBarComponent,
     ClienteComponent,
     PedidosComponent,
+    PadreComponent,
+    HijoComponent,
+    Hijo2Component,
    
 
 
