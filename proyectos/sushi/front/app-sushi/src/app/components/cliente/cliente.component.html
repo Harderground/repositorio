@@ -34,7 +34,7 @@
             <td>{{cliente.email}} </td>
             <td>{{cliente.fono}} </td>
             <td>
-              <button class="btn btn-outline-primary">
+              <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificar">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
               <button class="btn btn-outline-danger">
@@ -49,12 +49,12 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal  Agregar Cliente-->
 <div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="modalAgregar" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Cliente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -62,24 +62,67 @@
       <div class="modal-body">
          <div class="form-group">
             <label for="1">Nombre</label>
-            <input type="text" class="form-control" id="1" placeholder="Nombre">
+            <input type="text" class="form-control" id="1" placeholder="Nombre" [(ngModel)]="nom_cliente">
+           
           </div>
           <div class="form-group">
             <label for="2">Direccion</label>
-            <input type="text" class="form-control" id="2" placeholder="Direccion">
+            <input type="text" class="form-control" id="2" placeholder="Direccion" [(ngModel)]="dir_cliente">
           </div>
           <div class="form-group">
             <label for="3">Fono</label>
-            <input type="text" class="form-control" id="3" placeholder="Fono">
+            <input type="text" class="form-control" id="3" placeholder="Fono" [(ngModel)]="fono_cliente">
           </div>
           <div class="form-group">
             <label for="4">Email</label>
-            <input type="text" class="form-control" id="4" placeholder="Email">
+            <input type="text" class="form-control" id="4" placeholder="Email" [(ngModel)]="email_cliente">
           </div>
       </div>
       <div class="modal-footer">
       
-        <button type="button" class="btn btn-primary">Guardar
+        <button type="button" class="btn btn-primary" (click)="modificarCliente()">Guardar
+          <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar
+          <i class="fa fa-ban ml-1" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  Modificar Cliente-->
+<div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="modalModificar" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Cliente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="form-group">
+            <label for="1">Nombre</label>
+            <input type="text" class="form-control" id="1" placeholder="Nombre" [(ngModel)]="nom_cliente">
+           
+          </div>
+          <div class="form-group">
+            <label for="2">Direccion</label>
+            <input type="text" class="form-control" id="2" placeholder="Direccion" [(ngModel)]="dir_cliente">
+          </div>
+          <div class="form-group">
+            <label for="3">Fono</label>
+            <input type="text" class="form-control" id="3" placeholder="Fono" [(ngModel)]="fono_cliente">
+          </div>
+          <div class="form-group">
+            <label for="4">Email</label>
+            <input type="text" class="form-control" id="4" placeholder="Email" [(ngModel)]="email_cliente">
+          </div>
+      </div>
+      <div class="modal-footer">
+      
+        <button type="button" class="btn btn-primary" (click)="insertarCliente()">Guardar
           <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar

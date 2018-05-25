@@ -1,4 +1,5 @@
-﻿using servicios.negocio.Neg;
+﻿using servicios.negocio.Entidades;
+using servicios.negocio.Neg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,9 @@ using System.Web.Http;
 
 namespace WebApi.Controllers
 {
-    public class MainController : ApiController
+    public class ClienteController : ApiController
     {
+
 
         [HttpGet]
         public IHttpActionResult obtenerClientes()
@@ -25,13 +27,12 @@ namespace WebApi.Controllers
             }
         }
 
-
-        [HttpGet]
-        public IHttpActionResult obtenerProductos()
+        [HttpPost]
+        public IHttpActionResult insertarClientes(Cliente cliente)
         {
             try
             {
-                return Ok(ProductoNeg.obtenerProductos());
+                return Ok(ClienteNeg.insertarClientes(cliente));
             }
             catch (Exception ex)
             {
@@ -39,15 +40,6 @@ namespace WebApi.Controllers
                 throw;
             }
         }
-        [HttpPost]
-        public string post()
-        {
-            return "post";
-        }
-        [HttpGet]
-        public string get2()
-        {
-            return "get";
-        }
+
     }
 }

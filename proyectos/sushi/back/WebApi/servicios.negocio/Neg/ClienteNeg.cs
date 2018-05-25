@@ -26,5 +26,10 @@ namespace servicios.negocio.Neg
                 throw;
             }
         }
+
+        public static Cliente insertarClientes(Cliente cliente)
+        {
+            return cliente;
+        }
     }
 }

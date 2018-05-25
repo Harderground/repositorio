@@ -14,7 +14,7 @@ namespace servicios.sushi.Conexion.DAO
         {
             try
             {
-                MySqlConnection conexion = new MySqlConnection("server=127.0.0.1;database=sushi;Uid=root;pwd=;");
+                MySqlConnection conexion = new MySqlConnection("server=127.0.0.1;database=sushi;Uid=root;pwd=ibsdigital;");
                 conexion.Open();
                 return conexion;
             }
