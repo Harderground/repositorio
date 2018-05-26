@@ -55,7 +55,18 @@ public email_cliente:string;
     }
     );
   }
-  modificarCliente(){
+  obtenerCliente(id:any){
+    console.log(id);
+    this._clienteService.obtenerCliente(id).subscribe(
+
+      result => {
+        console.log(result);
+        
+    },
+    error =>  {
+        console.log(error);
+    }
+    );
     
   }
 }

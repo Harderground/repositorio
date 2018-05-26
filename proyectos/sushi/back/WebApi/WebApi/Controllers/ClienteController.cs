@@ -26,13 +26,26 @@ namespace WebApi.Controllers
                 throw;
             }
         }
-
-        [HttpPost]
-        public IHttpActionResult insertarClientes(Cliente cliente)
+        [HttpGet]
+        public IHttpActionResult obtenerCliente(string id)
         {
             try
             {
-                return Ok(ClienteNeg.insertarClientes(cliente));
+                return Ok(ClienteNeg.obtenerCliente(id));
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult insertarCliente(Cliente cliente)
+        {
+            try
+            {
+                return Ok(ClienteNeg.insertarCliente(cliente));
             }
             catch (Exception ex)
             {
