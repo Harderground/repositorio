@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../../clases/cliente.class';
 import { ClienteService } from '../../services/cliente.service';
 import { tick } from '@angular/core/testing';
+import { Mensaje } from '../../clases/mensaje.class';
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-cliente',
@@ -9,64 +12,118 @@ import { tick } from '@angular/core/testing';
   styleUrls: ['./cliente.component.css']
 })
 export class ClienteComponent implements OnInit {
-public lst_clientes:Cliente[]=[];
-public cliente: Cliente;
-public nom_cliente: string;
-public dir_cliente:string;
-public fono_cliente: string;
-public email_cliente:string;
-  constructor(private _clienteService:ClienteService) { }
+  public lst_clientes: Cliente[] = [];
+  public cliente_agregar: Cliente;
+  public cliente_modificar: Cliente;
+  public mensaje:Mensaje= new Mensaje();
+  public msgSuccess:any;
+  public msgError:any;
+  public estadoBoton:any;
+
+  constructor(private _clienteService: ClienteService) {
+    this.cliente_agregar = new Cliente("", "", "", "", "");
+    this.cliente_modificar = new Cliente("", "", "", "", "");
+    this.msgSuccess="";
+    this.msgError="";
+    this.estadoBoton=1;
+
+  }
 
   ngOnInit() {
     this.obtenerClientes();
-    this.cliente= new Cliente("","","",0,"");
-    this.nom_cliente="";
-    this.dir_cliente="";
-    this.fono_cliente= "";
-    this.email_cliente= "";
-  
+
+
   }
-  obtenerClientes(){
-    this._clienteService.obtenerClientes().subscribe( 
-        result => {
-            console.log(result);
-            this.lst_clientes = result;
-        },
-        error =>  {
-            console.log(error);
-        }
-    );
-  }
-
-  insertarCliente(){
-
-    this.cliente.nom_cliente=this.nom_cliente;
-    this.cliente.direccion= this.dir_cliente;
-    this.cliente.email    = this.email_cliente;
-    this.cliente.fono= this.fono_cliente;
-
-    this._clienteService.insertarClientes(this.cliente).subscribe(
+  obtenerClientes() {
+    this._clienteService.obtenerClientes().subscribe(
       result => {
         console.log(result);
-        
-    },
-    error =>  {
+        this.lst_clientes = result;
+      },
+      error => {
         console.log(error);
-    }
+        this.msgError= this.mensaje.Error_Conexion();
+      }
     );
   }
-  obtenerCliente(id:any){
+
+  insertarCliente() {
+    
+    this.estadoBoton=2;
+    this._clienteService.insertarClientes(this.cliente_agregar).subscribe(
+      result => {
+        console.log(result);
+        if (result==true){
+          this.msgSuccess= this.mensaje.Success();
+          this.obtenerClientes();
+          this.estadoBoton=3;
+          this.cliente_agregar = new Cliente("", "", "", "", "");
+          $("#BtnCancelarAgregar").click();
+        }else{
+          this.msgError=this.mensaje.Error_BackEnd();
+          this.estadoBoton=1;
+        }
+        
+      },
+      error => {
+        console.log(error);
+        this.msgError= this.mensaje.Error_Conexion();
+
+      }
+    );
+    
+  }
+  obtenerCliente(id: any) {
     console.log(id);
     this._clienteService.obtenerCliente(id).subscribe(
 
       result => {
         console.log(result);
-        
-    },
-    error =>  {
+        this.cliente_modificar = result;
+
+      },
+      error => {
         console.log(error);
-    }
+        this.msgError= this.mensaje.Error_Conexion();
+      }
+    );
+
+  }
+  modificarCliente() {
+    this._clienteService.modificarCliente(this.cliente_modificar).subscribe(
+      result => {
+        console.log(result);
+        this.obtenerClientes();
+      },
+      error => {
+        console.log(error);
+        this.msgError= this.mensaje.Error_Conexion();
+      }
     );
     
   }
+
+  eliminarCliente(id: any){
+    this._clienteService.eliminarCliente(id).subscribe(
+      result => {
+        console.log(result);
+        if (result==true){
+          this.msgSuccess= this.mensaje.Success();
+          this.obtenerClientes();
+        }
+        
+      },
+      error => {
+        console.log(error);
+        this.msgError= this.mensaje.Error_Conexion();
+      }
+    );
+  }
+  cerrarMensaje(){
+    this.msgError="";
+    this.msgSuccess="";
+  }
+
+
+
 }

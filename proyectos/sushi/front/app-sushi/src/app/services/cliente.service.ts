@@ -26,9 +26,17 @@ export class ClienteService {
   insertarClientes(Cliente: any): Observable<any> {
     return this.httpClient.post(`${this.host}${this.apiCliente}${apiMethod.insertarCliente}`,Cliente,this.headerPost);
   }
+  modificarCliente(Cliente: any): Observable<any> {
+    return this.httpClient.post(`${this.host}${this.apiCliente}${apiMethod.modificarCliente}`,Cliente,this.headerPost);
+  }
+  eliminarCliente(id: any): Observable<any> {
+    return this.httpClient.post(`${this.host}${this.apiCliente}${apiMethod.eliminarCliente}`+id,null,this.headerPost);
+  }
 }
 const apiMethod = {
-  obtenerClientes: 'obtenerClientes',
-  obtenerCliente: 'obtenerCliente?id=',
-  insertarCliente: 'insertarCliente'
+  obtenerClientes:  'obtenerClientes',
+  obtenerCliente:   'obtenerCliente?id=',
+  insertarCliente:  'insertarCliente',
+  modificarCliente: 'modificarCliente',
+  eliminarCliente:  'eliminarCliente?id='
 }

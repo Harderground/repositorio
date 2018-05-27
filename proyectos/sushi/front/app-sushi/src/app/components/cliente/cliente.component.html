@@ -1,18 +1,34 @@
-
-<hr><br>
+<hr>
+<br>
 <div class="container">
-<div class="row">
-  <div class="col-md-12">
-    <div class="alert alert-primary" role="alert">
+  <div class="row">
+    <div class="col-md-12 alert alert-primary">
+
       <div class="form-inline">
         <div class="form-group">
           <input type="text" class="form-control mr-2" id="" placeholder="Buscar cliente">
         </div>
+
         <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modalAgregar">Agregar cliente</button>
+        <div class="form-group">
+          <div *ngIf="msgSuccess !=''" class="alert alert-success ml-2" role="alert">
+            {{msgSuccess}}
+            <button type="button" class="close"  aria-label="Close" (click)="cerrarMensaje()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div  *ngIf="msgError !=''" class="alert alert-danger ml-2" role="alert">
+              {{msgError}}
+              <button type="button" class="close"  aria-label="Close" (click)="cerrarMensaje()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          
+        </div>
       </div>
+
     </div>
   </div>
-</div>
   <div class="row">
     <div class="col-md-12">
       <table class="table">
@@ -37,10 +53,10 @@
               <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificar" (click)="obtenerCliente(cliente.id_cliente)">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
-              <button class="btn btn-outline-danger">
+              <button class="btn btn-outline-danger"  (click)="eliminarCliente(cliente.id_cliente)">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
               </button>
-      
+
             </td>
           </tr>
         </tbody>
@@ -60,30 +76,38 @@
         </button>
       </div>
       <div class="modal-body">
-         <div class="form-group">
-            <label for="1">Nombre</label>
-            <input type="text" class="form-control" id="1" placeholder="Nombre" [(ngModel)]="nom_cliente">
-           
-          </div>
-          <div class="form-group">
-            <label for="2">Direccion</label>
-            <input type="text" class="form-control" id="2" placeholder="Direccion" [(ngModel)]="dir_cliente">
-          </div>
-          <div class="form-group">
-            <label for="3">Fono</label>
-            <input type="text" class="form-control" id="3" placeholder="Fono" [(ngModel)]="fono_cliente">
-          </div>
-          <div class="form-group">
-            <label for="4">Email</label>
-            <input type="text" class="form-control" id="4" placeholder="Email" [(ngModel)]="email_cliente">
-          </div>
+        <div class="form-group">
+          <label for="0">Rut Cliente</label>
+          <input type="text" class="form-control" id="0" placeholder="Rut Cliente" [(ngModel)]="cliente_agregar.id_cliente">
+
+        </div>
+        <div class="form-group">
+          <label for="1">Nombre</label>
+          <input type="text" class="form-control" id="1" placeholder="Nombre" [(ngModel)]="cliente_agregar.nom_cliente">
+        </div>
+        <div class="form-group">
+          <label for="2">Direccion</label>
+          <input type="text" class="form-control" id="2" placeholder="Direccion" [(ngModel)]="cliente_agregar.direccion">
+        </div>
+        <div class="form-group">
+          <label for="3">Fono</label>
+          <input type="text" class="form-control" id="3" placeholder="Fono" [(ngModel)]="cliente_agregar.fono">
+        </div>
+        <div class="form-group">
+          <label for="4">Email</label>
+          <input type="text" class="form-control" id="4" placeholder="Email" [(ngModel)]="cliente_agregar.email">
+        </div>
       </div>
       <div class="modal-footer">
-      
-        <button type="button" class="btn btn-primary" (click)="insertarCliente()">Guardar
+
+        <button type="button" class="btn btn-primary" *ngIf="estadoBoton==1" (click)="insertarCliente()">Guardar
           <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
         </button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar
+        <button type="button" class="btn btn-primary" *ngIf="estadoBoton==2" disabled (click)="insertarCliente()">Guardando...
+            <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
+          </button>
+          
+        <button type="button" id="BtnCancelarAgregar" class="btn btn-danger" data-dismiss="modal">Cancelar
           <i class="fa fa-ban ml-1" aria-hidden="true"></i>
         </button>
       </div>
@@ -102,26 +126,26 @@
         </button>
       </div>
       <div class="modal-body">
-         <div class="form-group">
-            <label for="1">Nombre</label>
-            <input type="text" class="form-control" id="1" placeholder="Nombre"  >
-           
-          </div>
-          <div class="form-group">
-            <label for="2">Direccion</label>
-            <input type="text" class="form-control" id="2" placeholder="Direccion" [(ngModel)]="dir_cliente">
-          </div>
-          <div class="form-group">
-            <label for="3">Fono</label>
-            <input type="text" class="form-control" id="3" placeholder="Fono" [(ngModel)]="fono_cliente">
-          </div>
-          <div class="form-group">
-            <label for="4">Email</label>
-            <input type="text" class="form-control" id="4" placeholder="Email" [(ngModel)]="email_cliente">
-          </div>
+        <div class="form-group">
+          <label for="1">Nombre</label>
+          <input type="text" class="form-control" id="1" placeholder="Nombre" [(ngModel)]="cliente_modificar.nom_cliente">
+
+        </div>
+        <div class="form-group">
+          <label for="2">Direccion</label>
+          <input type="text" class="form-control" id="2" placeholder="Direccion" [(ngModel)]="cliente_modificar.direccion">
+        </div>
+        <div class="form-group">
+          <label for="3">Fono</label>
+          <input type="text" class="form-control" id="3" placeholder="Fono" [(ngModel)]="cliente_modificar.fono">
+        </div>
+        <div class="form-group">
+          <label for="4">Email</label>
+          <input type="text" class="form-control" id="4" placeholder="Email" [(ngModel)]="cliente_modificar.email">
+        </div>
       </div>
       <div class="modal-footer">
-      
+
         <button type="button" class="btn btn-primary" (click)="modificarCliente()">Guardar
           <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
         </button>

@@ -27,29 +27,57 @@ namespace WebApi.Controllers
             }
         }
         [HttpGet]
-        public IHttpActionResult obtenerCliente(string id)
+        public Cliente obtenerCliente(string id)
         {
             try
             {
-                return Ok(ClienteNeg.obtenerCliente(id));
+                return ClienteNeg.obtenerCliente(id);
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return new Cliente();
                 throw;
             }
         }
 
         [HttpPost]
-        public IHttpActionResult insertarCliente(Cliente cliente)
+        public bool insertarCliente(Cliente cliente)
         {
             try
             {
-                return Ok(ClienteNeg.insertarCliente(cliente));
+                return ClienteNeg.insertarCliente(cliente);
             }
             catch (Exception ex)
             {
-                return NotFound();
+                return false;
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public bool modificarCliente(Cliente cliente)
+        {
+            try
+            {
+                return ClienteNeg.modificarCliente(cliente);
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public bool eliminarCliente(string id)
+        {
+            try
+            {
+                return ClienteNeg.eliminarCliente(id);
+            }
+            catch (Exception ex)
+            {
+                return false;
                 throw;
             }
         }
