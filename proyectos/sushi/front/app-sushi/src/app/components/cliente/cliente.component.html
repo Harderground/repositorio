@@ -13,17 +13,17 @@
         <div class="form-group">
           <div *ngIf="msgSuccess !=''" class="alert alert-success ml-2" role="alert">
             {{msgSuccess}}
-            <button type="button" class="close"  aria-label="Close" (click)="cerrarMensaje()">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <button type="button" class="close" aria-label="Close" (click)="cerrarMensaje()">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-          <div  *ngIf="msgError !=''" class="alert alert-danger ml-2" role="alert">
-              {{msgError}}
-              <button type="button" class="close"  aria-label="Close" (click)="cerrarMensaje()">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-          
+          <div *ngIf="msgError !=''" class="alert alert-danger ml-2" role="alert">
+            {{msgError}}
+            <button type="button" class="close" aria-label="Close" (click)="cerrarMensaje()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
         </div>
       </div>
 
@@ -53,7 +53,7 @@
               <button class="btn btn-outline-primary" data-toggle="modal" data-target="#modalModificar" (click)="obtenerCliente(cliente.id_cliente)">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
-              <button class="btn btn-outline-danger"  (click)="eliminarCliente(cliente.id_cliente)">
+              <button class="btn btn-outline-danger" data-toggle="modal" data-target="#modalEliminar" (click)="obtenerCliente(cliente.id_cliente)">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
               </button>
 
@@ -104,9 +104,9 @@
           <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
         </button>
         <button type="button" class="btn btn-primary" *ngIf="estadoBoton==2" disabled (click)="insertarCliente()">Guardando...
-            <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
-          </button>
-          
+          <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
+        </button>
+
         <button type="button" id="BtnCancelarAgregar" class="btn btn-danger" data-dismiss="modal">Cancelar
           <i class="fa fa-ban ml-1" aria-hidden="true"></i>
         </button>
@@ -153,6 +153,34 @@
           <i class="fa fa-ban ml-1" aria-hidden="true"></i>
         </button>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal  Eliminar Cliente-->
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminar" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel">¿Desea Eliminar al cliente?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+      
+          <button type="button" class="btn btn-success" *ngIf="estadoBoton==1" (click)="eliminarCliente(cliente_modificar.id_cliente)">Si
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-success" *ngIf="estadoBoton==2" disabled (click)="eliminarCliente(cliente_modificar.id_cliente)">Eliminando...
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </button>
+          <button type="button" id="BtncancelarEliminar" class="btn btn-danger" data-dismiss="modal">No
+            <i class="fa fa-ban " aria-hidden="true"></i>
+          </button>
+
+        </div>
     </div>
   </div>
 </div>

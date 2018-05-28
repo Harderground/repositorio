@@ -19,6 +19,7 @@ export class ClienteComponent implements OnInit {
   public msgSuccess:any;
   public msgError:any;
   public estadoBoton:any;
+  public confirmacion:any;
 
   constructor(private _clienteService: ClienteService) {
     this.cliente_agregar = new Cliente("", "", "", "", "");
@@ -26,6 +27,7 @@ export class ClienteComponent implements OnInit {
     this.msgSuccess="";
     this.msgError="";
     this.estadoBoton=1;
+    this.confirmacion="";
 
   }
 
@@ -56,7 +58,7 @@ export class ClienteComponent implements OnInit {
         if (result==true){
           this.msgSuccess= this.mensaje.Success();
           this.obtenerClientes();
-          this.estadoBoton=3;
+          this.estadoBoton=1;
           this.cliente_agregar = new Cliente("", "", "", "", "");
           $("#BtnCancelarAgregar").click();
         }else{
@@ -104,12 +106,15 @@ export class ClienteComponent implements OnInit {
   }
 
   eliminarCliente(id: any){
+    this.estadoBoton=2;
     this._clienteService.eliminarCliente(id).subscribe(
       result => {
         console.log(result);
         if (result==true){
           this.msgSuccess= this.mensaje.Success();
           this.obtenerClientes();
+          this.estadoBoton=1;
+          $("#BtncancelarEliminar").click(); 
         }
         
       },

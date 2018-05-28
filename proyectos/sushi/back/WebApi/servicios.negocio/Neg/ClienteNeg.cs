@@ -82,7 +82,7 @@ namespace servicios.negocio.Neg
         {
             try
             {
-                string query = string.Format("DELETE FROM `cliente` WHERE `Id_Cliente`={0}",id);
+                string query = string.Format("DELETE FROM `cliente` WHERE `Id_Cliente`='{0}'",id);
                 Conexion.conexionAccion(query);
                 return true;
             }
