@@ -17,6 +17,8 @@ import { ClienteService } from './services/cliente.service';
 import { PadreComponent } from './components/padre/padre.component';
 import { HijoComponent } from './components/hijo/hijo.component';
 import { Hijo2Component } from './components/hijo2/hijo2.component';
+import { ProductoComponent } from './components/producto/producto.component';
+import { ProductosService } from './services/productos.service';
 
 
 
@@ -33,6 +35,7 @@ import { Hijo2Component } from './components/hijo2/hijo2.component';
     PadreComponent,
     HijoComponent,
     Hijo2Component,
+    ProductoComponent,
    
 
 
@@ -50,6 +53,7 @@ import { Hijo2Component } from './components/hijo2/hijo2.component';
     appRoutingProviders,
     ServicioService,
     ClienteService,
+    ProductosService,
     { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

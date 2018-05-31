@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Tablas</h1>
+    <div class="row mt-5">
+        <div class="col-lg-3" *ngFor="let item of rolls| paginate: { itemsPerPage: 8, currentPage: p }">
+          <div class="thumbnail">
+              <label >Imagen  </label> <br>
+            <label >{{item.nombre}}</label>
+             <label >{{item.descripcion}}</label>
+           
+      
+            <div class="modal-footer">
+      
+              <button type="button" class="btn btn-info">Ver
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-secondary">Modificar
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+      
+        </div>
+        <div class="text-center">
+            <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
+          </div>
+      </div>
+      
+      <h1>ROlls</h1>
+    <div class="row mt-5">
+        <div class="col-lg-3" *ngFor="let roll of rolls| paginate: { itemsPerPage: 12, currentPage: p }">
+          <div class="thumbnail">
+              <label >Imagen  </label> <br>
+            <label >{{roll.nombre}}</label>
+             <label >{{roll.descripcion}}</label>
+           
+      
+            <div class="modal-footer">
+      
+              <button type="button" class="btn btn-info">Ver
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-secondary">Modificar
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+      
+        </div>
+        <div class="text-center">
+            <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
+          </div>
+      </div>
+</div>

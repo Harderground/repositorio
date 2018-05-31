@@ -8,6 +8,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { PadreComponent } from './components/padre/padre.component';
 import { HijoComponent } from './components/hijo/hijo.component';
 import { Hijo2Component } from './components/hijo2/hijo2.component';
+import { ProductoComponent } from './components/producto/producto.component';
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,8 @@ const appRoutes: Routes = [
     },
 
     { path: 'mantenedor-pedidos', component: PedidosComponent },
+    { path: 'productos', component: ProductoComponent },
+    
 
     { path: '**', component: NotFoundComponent },
 

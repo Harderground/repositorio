@@ -8,35 +8,20 @@ using System.Web.Http;
 
 namespace WebApi.Controllers
 {
-    public class MainController : ApiController
+    public class RollsController : ApiController
     {
-
         [HttpGet]
-        public IHttpActionResult obtenerClientes()
+        public IHttpActionResult obtenerRolls()
         {
             try
             {
-                return Ok(ClienteNeg.obtenerClientes());
+                return Ok(ProductoNeg.obtenerRolls());
             }
             catch (Exception ex)
             {
                 return NotFound();
                 throw;
             }
-        }
-
-
-     
-       
-        [HttpPost]
-        public string post()
-        {
-            return "post";
-        }
-        [HttpGet]
-        public string get2()
-        {
-            return "get";
         }
     }
 }

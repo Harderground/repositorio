@@ -12,7 +12,7 @@ namespace servicios.negocio.Neg
 {
     public class ProductoNeg
     {
-        public static IEnumerable<Producto> obtenerProductos()
+        public static IEnumerable<Producto> obtenerRolls()
         {
             try
             {
