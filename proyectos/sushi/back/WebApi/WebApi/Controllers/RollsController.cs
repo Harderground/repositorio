@@ -1,4 +1,5 @@
-﻿using servicios.negocio.Neg;
+﻿using servicios.negocio.Entidades;
+using servicios.negocio.Neg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,33 @@ namespace WebApi.Controllers
             {
                 return NotFound();
                 throw;
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult obtenerTablas()
+        {
+            try
+            {
+                return Ok(ProductoNeg.obtenerTablas());
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+                throw;
+            }
+        }
+        [HttpPost]
+        public bool insertarProducto(Producto producto)
+        {
+            try
+            {
+                return ProductoNeg.insertarProducto(producto);
+            }
+            catch (Exception)
+            {
+
+                return false;
             }
         }
     }

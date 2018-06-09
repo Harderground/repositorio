@@ -7,6 +7,7 @@ import { ResponseContentType } from '@angular/http';
 export class ProductosService {
   public host:any="http://localhost:11933/";
   private apiRolls: string = 'api/Rolls/';
+ 
   private headerPost: any;
   private headerGet: any;
   constructor(private httpClient: HttpClient) {
@@ -16,7 +17,15 @@ export class ProductosService {
    obtenerRolls(): Observable<any> {
     return this.httpClient.get(`${this.host}${this.apiRolls}${apiMethod.obtenerRolls}`);
   }
+  obtenerTablas(): Observable<any> {
+    return this.httpClient.get(`${this.host}${this.apiRolls}${apiMethod.obtenerTablas}`);
+  }
+  insertarProducto(producto:any): Observable<any> {
+    return this.httpClient.post(`${this.host}${this.apiRolls}${apiMethod.insertarProducto}`,producto,this.headerPost);
+  }
 }
 const apiMethod = {
-  obtenerRolls: 'obtenerRolls'
+  obtenerRolls: 'obtenerRolls',
+  obtenerTablas: 'obtenerTablas',
+  insertarProducto: 'insertarProducto'
 }

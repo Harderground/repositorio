@@ -1,53 +1,148 @@
+<br>
+<br>
 <div class="container">
-    <h1>Tablas</h1>
-    <div class="row mt-5">
-        <div class="col-lg-3" *ngFor="let item of rolls| paginate: { itemsPerPage: 8, currentPage: p }">
-          <div class="thumbnail">
-              <label >Imagen  </label> <br>
-            <label >{{item.nombre}}</label>
-             <label >{{item.descripcion}}</label>
-           
-      
-            <div class="modal-footer">
-      
-              <button type="button" class="btn btn-info">Ver
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-              </button>
-              <button type="button" class="btn btn-secondary">Modificar
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-              </button>
-            </div>
+  <div class="row">
+    <div class="col-md-12 alert alert-success">
+
+      <div class="form-inline">
+        <button type="button" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#modalAgregarProducto">Agregar Producto</button>
+        <div class="form-group">
+          <div *ngIf="msgSuccess !=''" class="alert alert-success ml-2" role="alert">
+            {{msgSuccess}}
+            <button type="button" class="close" aria-label="Close" (click)="cerrarMensaje()">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-      
+          <div *ngIf="msgError !=''" class="alert alert-danger ml-2" role="alert">
+            {{msgError}}
+            <button type="button" class="close" aria-label="Close" (click)="cerrarMensaje()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
         </div>
-        <div class="text-center">
-            <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h1 class="card-header">Tablas</h1>
+    <div class="row mt-5">
+      <div class="col-lg-3" *ngFor="let item of tablas| paginate: { itemsPerPage: 8, currentPage: p }">
+        <div class="thumbnail">
+          <br>
+          <img [src]="item.imagen" class="img-responsive img-thumbnail " alt="">
+          <p>{{item.nombre}}</p>
+          <p>{{item.descripcion}}</p>
+          <p>${{item.precio}}</p>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-info">Ver
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-secondary">Modificar
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center ">
+          <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h1 class="card-header">Rolls</h1>
+    <div class="row mt-5">
+      <div class="col-lg-3" *ngFor="let roll of rolls| paginate: { itemsPerPage: 12, currentPage: p }">
+        <div class="thumbnail">
+          <br>
+          <img [src]="roll.imagen" class="img-responsive img-thumbnail " alt="">          
+          <p>{{roll.nombre}}</p>
+          <p>{{roll.descripcion}}</p>
+          <p>${{roll.precio}}</p>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-info">Ver
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-secondary">Modificar
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
           </div>
       </div>
-      
-      <h1>ROlls</h1>
-    <div class="row mt-5">
-        <div class="col-lg-3" *ngFor="let roll of rolls| paginate: { itemsPerPage: 12, currentPage: p }">
-          <div class="thumbnail">
-              <label >Imagen  </label> <br>
-            <label >{{roll.nombre}}</label>
-             <label >{{roll.descripcion}}</label>
-           
-      
-            <div class="modal-footer">
-      
-              <button type="button" class="btn btn-info">Ver
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-              </button>
-              <button type="button" class="btn btn-secondary">Modificar
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
-      
-        </div>
-        <div class="text-center">
-            <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
-          </div>
+      <div class="text-center">
+        <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
       </div>
-</div>
+    </div>
+  </div>
+
+
+  <!-- Modal  Agregar Producto-->
+  <div class="modal fade" id="modalAgregarProducto" tabindex="-1" role="dialog" aria-labelledby="modalAgregarProducto" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle ml-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{producto_agregar.categoria}}
+            </button>
+            <div class="dropdown-menu">
+              <label class="dropdown-item" (click)="setCategoria('Roll')">Roll</label>
+              <label class="dropdown-item" (click)="setCategoria('Tabla')">Tabla</label>
+            </div>
+
+          </div>
+          <div class="form-group mt-1">
+            <label for="0">Nombre Producto</label>
+            <input type="text" class="form-control" id="0" placeholder="Nombre Producto" [(ngModel)]="producto_agregar.nombre">
+
+          </div>
+          <div class="form-group">
+            <label for="1">Descripcion</label>
+            <textarea type="text" class="form-control" id="0" placeholder="Descripcion Producto" [(ngModel)]="producto_agregar.descripcion"></textarea>
+
+          </div>
+          <div class="form-group">
+            <label for="3"> Precio </label>
+            <input type="text" class="form-control" id="0" placeholder="Precio Producto" [(ngModel)]="producto_agregar.precio">
+
+          </div>
+          <div class="col-md-6">
+            <img [src]="producto_agregar.imagen" class="img-responsive img-thumbnail " alt="">
+
+          </div>
+          <div class="custom-file">
+            <input type="file" id="img-upload" (change)="agregarImagen()" class="custom-file-input" lang="es">
+            <label class="custom-file-label" for="img-upload">Seleccionar Archivo</label>
+          </div>
+          <div class="modal-footer">
+
+            <button type="button" class="btn btn-primary" *ngIf="estadoBoton==1" (click)="insertarProducto()">Guardar
+              <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-primary" *ngIf="estadoBoton==2" disabled (click)="insertarProducto()">Guardando...
+              <i class="fa fa-floppy-o ml-1" aria-hidden="true"></i>
+            </button>
+
+            <button type="button" id="BtnCancelarAgregar" class="btn btn-danger" data-dismiss="modal">Cancelar
+              <i class="fa fa-ban ml-1" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
